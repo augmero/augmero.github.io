@@ -32,15 +32,16 @@
         </h2>
 
         <h1>augmero's physics workflow - Ziva Dynamics for Blender</h1>
-        <p>Last edited: 12/26/2021</p>
+        <p>Last edited: 12/30/2021</p>
 
         <h2>Disclaimer:</h2>
         <p>This is an experimental workflow. I am not an expert and I don't necessarily recommend anybody actually do this.</p>
         <p>If you are new to Blender or 3D this post is probably not for you, but bookmark it for later if you're interested</p>
         <p>However, if you are looking beyond Blender native physics I hope some of these notes will be useful! </p>
         <p>If you found this page and don't know who augmero is, fair warning some links are going to be NSFW. While this workflow can be useful for more general applications, I am using it for NSFW content</p>
-        <p>If you're curious what kind of results I'm getting I post on <a href="https://twitter.com/augmero_nsfw" target="_blank">Twitter</a> and some other places (check the archive in my bio for higher quality)</p>
-        <p>Thanks <a href="https://twitter.com/RealBeetlebomb" target="_blank">Beetlebomb</a> for looking over this and making suggestions!</p>
+        <p>If you're curious what kind of results I'm getting I post on <a href="https://twitter.com/augmero_nsfw" target="_blank">@augmero_nsfw</a> and some other places (check the archive in my bio for higher quality)</p>
+        <p>Thanks <a href="https://twitter.com/RealBeetlebomb" target="_blank">@Beetlebomb</a> for looking over this and making suggestions!</p>
+        <p><a href="https://twitter.com/vanasmuttin" target="_blank">@vanasmuttin</a> Is also trying this workflow and came up with some cool ideas to add, thanks!</p>
         <p>Lastly, if you have ideas / improvements let me know! I'll keep this page updated</p>
 
         <p>
@@ -167,6 +168,9 @@
                 <a href="https://github.com/huxingyi/autoremesher/releases" target="_blank">huxingyi/autoremesher</a> and <a href="https://github.com/wjakob/instant-meshes" target="_blank">wjakob/instant-meshes</a>,
                 they work in a similar fashion
             </li>
+            <ul>
+                <li>Instant meshes gives a lot more control and options than autoremesher</li>
+            </ul>
             <ol>
                 <li>Export the Blender mesh as a .obj file</li>
                 <li>Open it in either of the programs, pick your preferred density of vertices and save it</li>
@@ -218,19 +222,17 @@
 
         <h3>Exporting to Maya</h3>
         <p>Now that you have all of these excellent and prepared meshes, it's export time</p>
-        <p>There are multiple exports we have to do</p>
+        <p>There are multiple exports we have to do, </p>
         <ol>
-            <li>Base export</li>
+            <li>Static mesh export (the cage for use as zTissue)</li>
             <ul>
                 <li>Export as FBX, here are the settings I use: </li>
                 <li><img src="https://i.imgur.com/ACyb85c.png" alt="Maya mesh export screenshot"></li>
             </ul>
-            <li>Animated export</li>
+            <li>Animated export (zBones to attach to, zRestShapes, etc) </li>
             <ul>
-                <li>This is an alembic export, for performance reasons I recommend excluding from view layer collections of
-                    anything that's not being exported</li>
-                <li>Here's a <a href="https://github.com/augmero/blender-alembic-bulk-exporter" target="_blank">python script</a> which I made to batch export the animated versions of my meshes, to use it
-                    you have to go and read the documentation in the script</li>
+                <li>This is an alembic export, for performance reasons I recommend excluding from view layer collections of anything that's not being exported</li>
+                <li>Here's a <a href="https://github.com/augmero/blender-alembic-bulk-exporter" target="_blank">python script</a> which I made to batch export the animated versions of my meshes, to use it you have to go and read the documentation in the script</li>
             </ul>
         </ol>
 
@@ -255,17 +257,25 @@
             </ul>
             <li>Import Blender alembic files into Maya</li>
             <li>Import Blender FBX files into Maya</li>
-            <li>Make a blend shape on the static fbx pointing to the animated alembic (set envelope to 1)</li>
-            <li>Duplicate the static FBX, it's going to do two different things</li>
+            <li>Duplicate (ctrl d) the static FBX, it's going to do two different things</li>
             <li>One version of the static FBX is now going to become part of the physics sim, make it a zTissue</li>
-            <li>The other version of the static FBX is now going to become a zBone with no collisons for attaching the zTissue to</li>
-            <li>Make attachments from the tissue to the now-animated fbx </li>
+            <li>The other version of this FBX is now going to become a zBone with no collisons for attaching the zTissue to</li>
+            <ul>
+                <li>Make a blend shape on the static fbx pointing to the animated alembic (set envelope to 1)</li>
+            </ul>
+            <li>Make attachments from the zTissue to the zBone </li>
             <ul>
                 <li>Make sure to set high strength attachments on parts where the cage is next to vertices that won't be part of the mesh deform, like by the head, wrists, feet, gens. Otherwise the physics sim will travel away from the armature and that's no good</li>
             </ul>
         </ol>
+        <p>I have left these steps fairly generic / sparse because the elephant youtube tutorial does such a good job of describing many things in Ziva, and there's a lot of artistic freedom here. This is a really fun part of the flow. There are some more specific Ziva notes I added after Step 5, I'll link them here. They are also in the floating menu</p>
+        <p>
+            <a href="#augmero-janchor-clothing">Clothing</a>
+            <br>
+            <a href="#augmero-janchor-expansion">Expansion</a>
+        </p>
         <br>
-        <h3>IMPORTANT NOTE: REVISIONS</h3>
+        <h3>IMPORTANT NOTE READ THIS: REVISIONS</h3>
         Revisions are super important for any workflow, here's how to efficiently re-export/re-import your Blender alembics without having to re-do any of the later steps.
         <ol>
             <li>Save the Maya scene and then export your Blender alembics, overwriting the existing files.</li>
@@ -331,6 +341,7 @@
             </ul>
             <li>zRestShape</li>
             <ul>
+                <li>Export one more version of the cage from blender with shape keys over time as alembic! Thanks for the tip <a href="https://twitter.com/vanasmuttin" target="_blank">@vanasmuttin</a></li>
                 <li>Pros: Individual animation over time with envelopes</li>
                 <li>Cons:</li>
                 <ul>
