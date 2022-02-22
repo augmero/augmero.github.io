@@ -19,6 +19,7 @@
         <a class="augmero-anchor" id="augmero-janchor-top"></a>
 
         <h2 class="augmero-quick-menu">
+            <p>v1</p>
             <a href="#augmero-janchor-top">Top</a>
             <a href="#augmero-janchor-overview">Overview</a>
             <a href="#augmero-janchor-step1">Step 1</a>
@@ -32,7 +33,7 @@
         </h2>
 
         <h1>augmero's physics workflow - Ziva Dynamics for Blender</h1>
-        <p>Last edited: 12/30/2021</p>
+        <p>Last edited: 02/21/2021</p>
 
         <h2>Disclaimer:</h2>
         <p>This is an experimental workflow. I am not an expert and I don't necessarily recommend anybody actually do this.</p>
@@ -170,12 +171,13 @@
             </li>
             <ul>
                 <li>Instant meshes gives a lot more control and options than autoremesher</li>
+                <li>There's also quad remesher and voxel remesher built into Blender</li>
             </ul>
             <ol>
                 <li>Export the Blender mesh as a .obj file</li>
                 <li>Open it in either of the programs, pick your preferred density of vertices and save it</li>
                 <ul>
-                    <li>I recommend keeping the density of all the meshes that are going to be part of the Ziva simulationfairly similar, doesn't have to be perfect</li>
+                    <li>I recommend keeping the density of all the meshes that are going to be part of the Ziva simulation fairly similar, doesn't have to be perfect</li>
                 </ul>
                 <li>Save</li>
             </ol>
@@ -185,6 +187,7 @@
             <ul>
                 <li>Click on 'Generate Data Layers' first and then apply the modifier</li>
                 <li>Make sure the two meshes are overlapping, maybe put your armature in rest pose for this section</li>
+                <li>Generally for mapping it's probably better to use Nearest Face Interpolated,though I forgot to change it for this screenshot</li>
                 <li><img src="https://i.imgur.com/KkvxZna.png" alt="Data transfer modifier screenshot"></li>
             </ul>
             <li>This will look pretty decent, but you will notice some deformation artifacts during the animation due to the
@@ -266,6 +269,7 @@
             <li>Make attachments from the zTissue to the zBone </li>
             <ul>
                 <li>Make sure to set high strength attachments on parts where the cage is next to vertices that won't be part of the mesh deform, like by the head, wrists, feet, gens. Otherwise the physics sim will travel away from the armature and that's no good</li>
+                <li>Remember to use vertex select before attaching and then weight paint the attachment to prevent it from affecting parts that don't need to be attached </li>
             </ul>
         </ol>
         <p>I have left these steps fairly generic / sparse because the elephant youtube tutorial does such a good job of describing many things in Ziva, and there's a lot of artistic freedom here. This is a really fun part of the flow. There are some more specific Ziva notes I added after Step 5, I'll link them here. They are also in the floating menu</p>
