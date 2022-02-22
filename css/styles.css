@@ -1,0 +1,36 @@
+a.augmero-anchor {
+  display: block;
+  visibility: hidden;
+}
+
+.augmero-links {
+  top: 40px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  padding: 0.2em 0.6em 0.4em 0.6em;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: .5em;
+}
+
+.augmero-links .augmero-profile img {
+  height: 6em;
+  width: 6em;
+}
+
+.augmero-links a {
+  color: skyblue;
+  padding: 1em;
+  margin: .5em auto;
+  width: 50%;
+  max-width: 680px;
+  text-align: center;
+  background-color: #282832;
+}
+/*# sourceMappingURL=styles.css.map */
