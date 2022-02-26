@@ -11,7 +11,7 @@ a.augmero-anchor {
     padding: 0.2em 0.6em 0.4em 0.6em;
     border-radius: 15px;
     text-align: center;
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
 
     .augmero-profile {
         img {
@@ -23,10 +23,92 @@ a.augmero-anchor {
     a {
         color: skyblue;
         padding: 1em;
-        margin: .5em auto;
-        width: 50%;
+        margin: 0.5em auto;
+        width: 75%;
         max-width: 680px;
         text-align: center;
-        background-color: rgb(40,40,50);
+        background-color: rgb(40, 40, 50);
+        transition: 0.1s;
+    }
+    a:hover {
+        background-color: scale-color(rgb(40, 40, 50), $lightness: 5%);
+    }
+}
+
+.augmero-home-button {
+    top: 2em;
+    opacity: 70%;
+    margin-left: -0.5em;
+    img {
+        height: 2em;
+        width: 2em;
+    }
+}
+
+.augmero-home-button:hover {
+    opacity: 100%;
+}
+
+.augmero-header {
+    position: sticky;
+    top: 0;
+    padding: 0.5em;
+    background-color: #191d21;
+    opacity: 95%;
+}
+
+.augmero-content {
+    margin: auto;
+    // max-width: max(72em,100%);
+    max-width: 72em;
+    padding: 0 12em;
+    // overflow-x: hidden;
+    a {
+        color: skyblue;
+    }
+    img {
+        max-width: 100%;
+    }
+}
+
+a.augmero-anchor {
+    display: block;
+    visibility: hidden;
+}
+
+.augmero-quick-menu-floater {
+    height: 0;
+    width: 0;
+    float: right;
+}
+
+.augmero-quick-menu {
+    position: sticky;
+    top: 0;
+    float: left;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-flow: column;
+    padding: 0.2em 0.6em 0.4em 0.6em;
+    border-radius: 15px;
+    margin-left: .5em;
+    a {
+        user-select: none;
+    }
+}
+
+@media screen and (max-width:1160px) {
+    .augmero-content {
+        padding: 0 6em;
+    }
+    .augmero-quick-menu-floater {
+        width: 12em;
+        position: absolute;
+        top: 0;
+        right: 0;
+        .augmero-quick-menu {
+            float: right;
+            text-align: right;
+        }
     }
 }
