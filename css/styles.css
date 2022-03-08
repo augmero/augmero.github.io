@@ -58,6 +58,13 @@ a.augmero-anchor {
 .augmero-header {
   position: -webkit-sticky;
   position: sticky;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
   top: 0;
   padding: 0.5em;
   background-color: #191d21;
@@ -86,6 +93,7 @@ a.augmero-anchor {
 .augmero-quick-menu-floater {
   height: 0;
   width: 0;
+  margin-left: auto;
   float: right;
 }
 
@@ -105,6 +113,18 @@ a.augmero-anchor {
   padding: 0.2em 0.6em 0.4em 0.6em;
   border-radius: 15px;
   margin-left: .5em;
+  white-space: nowrap;
+}
+
+.augmero-quick-menu .augmero-quick-menu-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  white-space: nowrap;
 }
 
 .augmero-quick-menu a {
@@ -122,7 +142,7 @@ a.augmero-anchor {
     width: 12em;
     position: absolute;
     top: 0;
-    right: 0;
+    right: -6em;
   }
   .augmero-quick-menu-floater .augmero-quick-menu {
     float: right;
