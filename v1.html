@@ -15,27 +15,48 @@
 </head>
 
 <body>
-    <div class="content" style="padding: 2em;">
+    <div class="augmero-content">
 
-        <a class="augmero-anchor" id="augmero-janchor-top"></a>
+        <a class="augmero-anchor" id="augmero-janchor-top" style="padding-top:0;"></a>
 
-        <h2 class="augmero-quick-menu">
-            <p>v1</p>
-            <a href="#augmero-janchor-top">Top</a>
-            <a href="#augmero-janchor-overview">Overview</a>
-            <a href="#augmero-janchor-step1">Step 1</a>
-            <a href="#augmero-janchor-step2">Step 2</a>
-            <a href="#augmero-janchor-step3">Step 3</a>
-            <a href="#augmero-janchor-step4">Step 4</a>
-            <a href="#augmero-janchor-step5">Step 5</a>
-            <a href="#augmero-janchor-clothing">Clothing</a>
-            <a href="#augmero-janchor-expansion">Expansion</a>
-            <a href="#augmero-janchor-resources">Resources</a>
-        </h2>
+        <header class="augmero-header">
+            <a class="augmero-home-button" id="augmero-home-button" href="https://augmero.github.io/">
+                <img src="assets/favicon.png">
+            </a>
+            <h3 style="margin-left: .5em;">Augmero V1 Physics Workflow <a href="v2.html">(V2 here)</a></h3>
+            <div class="augmero-quick-menu-floater">
+
+                <h2 class="augmero-quick-menu" id="augmero-quick-menu">
+                    <a onclick="toggleQuickMenu()" style="cursor:pointer;">☰</a>
+                    <div id="augmero-quick-menu-links" class="augmero-quick-menu-links">
+                        <a href="#augmero-janchor-top">Top</a>
+                        <a href="#augmero-janchor-comparison">V1 vs V2</a>
+                        <a href="#augmero-janchor-overview">Overview</a>
+                        <a href="#augmero-janchor-step1">Step 1</a>
+                        <a href="#augmero-janchor-step2">Step 2</a>
+                        <a href="#augmero-janchor-step3">Step 3</a>
+                        <a href="#augmero-janchor-step4">Step 4</a>
+                        <a href="#augmero-janchor-step5">Step 5</a>
+                        <a href="#augmero-janchor-clothing">Clothing</a>
+                        <a href="#augmero-janchor-expansion">Expansion</a>
+                        <a href="#augmero-janchor-resources">Resources</a>
+                    </div>
+                </h2>
+                <script>
+                    function toggleQuickMenu() {
+                        let m = document.getElementById("augmero-quick-menu-links")
+                        if (m.style.display == "none") {
+                            m.style.display = "flex"
+                        } else {
+                            m.style.display = "none"
+                        }
+                    }
+                </script>
+            </div>
+        </header>
 
         <h1>augmero's physics workflow v1 - Ziva Dynamics for Blender</h1>
-        <a href="v2.html">See also: V2</a>
-        <p>Last edited: 02/21/2022</p>
+        <p>Last edited: 03/15/2022, version history on <a href="https://github.com/augmero/augmero.github.io" target="_blank">GitHub</a></p>
 
         <h2>Disclaimer:</h2>
         <p>This is an experimental workflow. I am not an expert and I don't necessarily recommend anybody actually do this.</p>
@@ -381,30 +402,6 @@
             </li>
             <li><a href="https://community.zivadynamics.com/d/81-making-of-female-with-ziva/35" target="_blank">making of female with Ziva</a></li>
         </ul>
-
-
-        <style type="text/css" media="screen">
-            a.augmero-anchor {
-                display: block;
-                visibility: hidden;
-            }
-
-            a {
-                color: skyblue;
-            }
-
-            .augmero-quick-menu {
-                position: sticky;
-                top: 40px;
-                float: right;
-                background-color: rgba(0, 0, 0, .6);
-                display: flex;
-                flex-flow: column;
-                padding: .2em .6em .4em .6em;
-                border-radius: 15px;
-            }
-        </style>
-
 
     </div>
 

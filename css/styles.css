@@ -1,6 +1,7 @@
 a.augmero-anchor {
   display: block;
   visibility: hidden;
+  padding-top: 20px;
 }
 
 .augmero-links {
@@ -83,11 +84,6 @@ a.augmero-anchor {
 
 .augmero-content img {
   max-width: 100%;
-}
-
-a.augmero-anchor {
-  display: block;
-  visibility: hidden;
 }
 
 .augmero-quick-menu-floater {
