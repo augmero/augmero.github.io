@@ -58,7 +58,7 @@
 
 
         <h1>augmero's physics workflow v2 - Ziva Dynamics for Blender</h1>
-        <p>Last edited: 03/15/2022, version history on <a href="https://github.com/augmero/augmero.github.io" target="_blank">GitHub</a></p>
+        <p>Last edited: 03/23/2022, version history on <a href="https://github.com/augmero/augmero.github.io" target="_blank">GitHub</a></p>
         <p>This is an evolution of v1, the main difference is I'm using surface deform rather than mesh deform modifier in blender.</p>
         <p>I also made an attempt at cleaning up and simplifying some parts that got copied over</p>
 
@@ -258,10 +258,15 @@
             <ul>
                 <li>Make a blend shape on the static fbx pointing to the animated alembic (set envelope to 1)</li>
             </ul>
-            <li>Make attachments from the zTissue to the zBone </li>
+            <li>Make attachments from the zBone to the zTissue </li>
             <ul>
-                <li>Make sure to set high strength attachments on parts where the cage is next to vertices that won't be part of the mesh deform, like by the head, wrists, feet, gens. Otherwise the physics sim will travel away from the armature and that's no good</li>
+                <li>Make sure to set high strength attachments on parts where the cage is next to vertices that won't be part of the final deform, like by the head, wrists, feet, gens. Otherwise the physics sim will travel away from the armature and that's no good</li>
                 <li>Remember to use vertex select before attaching and then weight paint the attachment to prevent it from affecting parts that don't need to be attached </li>
+            </ul>
+            <li>Optional step: I've been getting improved results by using this alembic as a zRestShape of my zTissue</li>
+            <ul>
+                <li>There is a problem / bug with this but there are workarounds. A quick description of the issue (by my assumptions) is that Ziva is optimized such that if the rest shape hasn't changed a lot it won't update. Since the rest shape is an alembic this can cause some jumping</li>
+                <li>Workaround: In some cases where this occurs I've had success with an oscillating shape key out of sight used for my zRestShape mesh (doesn't have to be the same as the zBone). The constant changes with this shape key will force Ziva to update. Can also put this shape key on one of the holes that got filled so it never reflects on the original mesh</li>
             </ul>
         </ol>
         <p>I have left these steps fairly generic / sparse because the elephant youtube tutorial does such a good job of describing many things in Ziva, and there's a lot of artistic freedom here. This is a really fun part of the flow. There are some more specific Ziva notes I added after Step 5, I'll link them here. They are also in the floating menu</p>
