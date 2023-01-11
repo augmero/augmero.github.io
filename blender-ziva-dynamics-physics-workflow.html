@@ -58,7 +58,9 @@
 
 
         <h1>augmero's physics workflow - Ziva Dynamics for Blender</h1>
-        <p>Last edited: 06/29/2022, version history on <a href="https://github.com/augmero/augmero.github.io" target="_blank">GitHub</a></p>
+        <p>Last edited: 01/10/2023, version history on <a href="https://github.com/augmero/augmero.github.io" target="_blank">GitHub</a></p>
+
+        <p>supporting video documentation - <a href="https://www.youtube.com/watch?v=hnPJCRaTDEo" target="_blank">https://www.youtube.com/watch?v=hnPJCRaTDEo</a></p>
 
         <h2>Disclaimer:</h2>
         <p>This is an experimental workflow. I don't necessarily recommend anybody actually do this.</p>
@@ -85,9 +87,6 @@
                 Ziva Dynamics is a plugin for Maya that specializes in character physics simulation and deformations.
             </li>
             <li>
-                Magic
-            </li>
-            <li>
                 Check out this lion: <a href="https://www.youtube.com/watch?v=vsTP6Ldm7Yo">https://www.youtube.com/watch?v=vsTP6Ldm7Yo</a>
             </li>
             <li>For something more relevant to this post you can take a look at my recent <a href="https://twitter.com/augmero_nsfw" target="_blank">animations (NSFW)</a></li>
@@ -103,7 +102,7 @@
                 Many models and shared resources online have armatures and python scripts for Blender with no Maya version, it's not easy to port things to Maya
             </li>
             <li>
-                Most of my experience and workflows (modeling, sculpting, rendering, materials, etc) is in Blender/Cycles, re-learning all of that stuff for Maya is a lot
+                Most of my experience and workflows (modeling, sculpting, rendering, materials, etc) is in Blender/Cycles, re-learning all of that stuff for Maya is difficult
             </li>
         </ul>
         
@@ -149,6 +148,8 @@
             <li>Export Ziva physics sim, import to blender</li>
             <li>Surface deform original model</li>
         </ol>
+        <p>Supporting video documentation for this workflow - <a href="https://www.youtube.com/watch?v=hnPJCRaTDEo" target="_blank">https://www.youtube.com/watch?v=hnPJCRaTDEo</a></p>
+
         <a class="augmero-anchor" id="augmero-janchor-step1"></a>
         <p>
             <hr>
@@ -212,16 +213,9 @@
 
         <h3>Exporting to Maya</h3>
         <p>It's export time</p>
-        <p>There are multiple exports we have to do, </p>
         <ol>
-            <li>Static mesh export (the cage for use as zTissue)</li>
             <ul>
-                <li>Export as FBX, here are the settings I use: </li>
-                <li><img src="https://i.imgur.com/ACyb85c.png" alt="Maya mesh export screenshot"></li>
-            </ul>
-            <li>Animated export (zBones to attach to, zRestShapes, etc) </li>
-            <ul>
-                <li>This is an alembic export, for performance reasons I recommend excluding from view layer collections of anything that's not being exported</li>
+                <li>alembic export - for performance reasons I recommend excluding from view layer collections of anything that's not being exported</li>
                 <ul><li>This means the checkbox on the collection. Export will be slower if anything else is being calculated by the view layer</li></ul>
                 <li>For batch exporting alembics, I made a <a href="https://github.com/augmero/blender-alembic-bulk-exporter" target="_blank">python script</a>, to use it read the documentation in the script. This is much more quick and efficient than doing it through the blender UI</li>
             </ul>
@@ -245,12 +239,11 @@
                 <li>Maya defaults to 24fps</li>
             </ul>
             <li>Import Blender alembic files into Maya</li>
-            <li>Import Blender FBX files into Maya</li>
-            <li>Duplicate (ctrl d) the static FBX for the body, it's going to do two different things</li>
-            <li>One version of the static FBX is now going to become part of the physics sim, make it a zTissue</li>
-            <li>The other version of this FBX is now going to become an animated zBone (disable collisons) for attaching the zTissue to</li>
+            <li>Duplicate it twice (ctrl d), it's going to do multiple things</li>
+            <li>One version will now be part of the physics sim, make it a zTissue</li>
+            <li>The other version is now going to become an animated zBone (disable collisons) for attaching the zTissue to</li>
             <ul>
-                <li>Make a blend shape on the static fbx pointing to the animated alembic (set envelope to 1)</li>
+                <li>Make a blend shape from the alembic mesh to a duplicate (set envelope to 1)</li>
             </ul>
             <li>Make attachments from the zBone to the zTissue </li>
             <ul>
